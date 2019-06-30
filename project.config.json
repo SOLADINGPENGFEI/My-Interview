@@ -1,0 +1,34 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"miniprogramRoot": "dist/wx/",
+	"compileType": "miniprogram",
+	"appid": "wx3375420e2c184d34",
+	"projectname": "%E6%88%91%E3%81%AE%E9%9D%A2%E8%AF%95%E7%A7%98%E8%AF%80",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
+}
