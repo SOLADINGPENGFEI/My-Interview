@@ -1,6 +1,6 @@
 # my-interview
 
-> 我的面试形程
+> 我的面试行程
 
 ## Build Setup
 
