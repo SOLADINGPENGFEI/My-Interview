@@ -2,7 +2,7 @@
   <div class="wrap">
         <div class="main">
             <TencentMap />
-            <button class="userInfo" @click="Login">
+            <button class="userInfo" @click="UserLogin">
                   <image class="userIcon" src="/static/images/my.png" />
             </button>
         </div>
@@ -16,10 +16,11 @@
 import TencentMap from '@/components/TencentMap'
 import Foot from '@/components/footer'
 
+import {mapState,mapActions,mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      
+       
     }
   },
 
@@ -28,15 +29,66 @@ export default {
   },
 
   methods: {
-      Login() {
+      UserLogin() {
         wx.navigateTo({
           url: '/pages/Login/main'
         })
-      }
+      },
+      ...mapActions({
+          Login: 'index/Login'
+        })
   },
-
-  created () {
-    // let app = getApp()
+  cmoputed: {
+      ...mapState({
+         openid: state=> state.index.openid
+      })
+  },
+  created () {   
+    this.Login()  
+    wx.getSetting({
+      success(res) {
+        // console.log(res)
+        if(res.authSetting) {
+          //授权
+          wx.getUserInfo({
+            success: function(res) {
+              let userInfo = res.userInfo
+              let nickName = userInfo.nickName
+              let avatarUrl = userInfo.avatarUrl
+              let gender = userInfo.gender //性别 0：未知、1：男、2：女
+              let province = userInfo.province
+              let city = userInfo.city
+              let country = userInfo.country
+            },
+            fail: function(resF) {
+              console.log('resF...',resF)
+            }
+          })
+        } else {
+          // 未授权
+          wx.authorize({
+          scode: 'scope.record',
+          success: (res)=>{
+            console.log(res)
+            wx.getUserInfo({
+            success: function(res) {
+              let userInfo = res.userInfo
+              let nickName = userInfo.nickName
+              let avatarUrl = userInfo.avatarUrl
+              let gender = userInfo.gender //性别 0：未知、1：男、2：女
+              let province = userInfo.province
+              let city = userInfo.city
+              let country = userInfo.country
+            }});
+          },
+          fail: ()=>{
+            wx.openSetting();
+          }
+        })
+        }
+      }
+    })
+  
   }
 }
 </script>

@@ -1,11 +1,11 @@
 <template>
     <div class="person-center">
-        <div class="userInfo">
+        <button class="userInfo" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
             <div class="user-avtar">
                 <image src="/static/images/my.png"/>
             </div>
-            <p>152****4133</p>
-        </div>
+            <p>{{phone}}</p>
+        </button>
         <div class="list-nav">
             <div class="item-nav" @click="myInterview">
                 <icon class="" size="18" type="waiting" role="img"></icon>
@@ -21,22 +21,44 @@
     </div>
 </template>
 <script>
+import {mapState,mapActions} from 'vuex'
 export default {
     components:{
 
     },
     computed:{
-
+        ...mapState({
+            phone: state => state.index.phone
+        })
     },
     methods:{
         myInterview() {
             wx.navigateTo({
                 url: '/pages/MyInterview/main'
             })
+        },
+        onLoad: function() {
+            // 查看是否授权
+            wx.getSetting({
+            success (res){
+                if (res.authSetting['scope.userInfo']) {
+                // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                wx.getUserInfo({
+                    success: function(res) {
+                    console.log(res.userInfo)
+                    }
+                })
+                }
+            }
+            })
+        },
+        bindGetUserInfo (e) {
+            console.log(e.detail.userInfo)
         }
+        
     },
     created(){
-
+        
     }
 }
 </script>

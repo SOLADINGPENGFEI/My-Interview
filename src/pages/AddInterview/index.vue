@@ -12,13 +12,14 @@
             </div>
             <div>
                 <span>面试时间</span>
-                <picker mode="date"
+                <picker mode="multiSelector"
                 class="pick"
                 :value="date" 
-                :range="dateTime"
-                bindchange="bindTimeChange">
+                :range="multiArray"
+                bindchange="bindMultiPickerChange"
+                bindcolumnchange="bindMultiPickerColumnChange">
                     <view class="picker">
-                        {{date}}
+                        {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} {{multiArray[2][multiIndex[2]]}}
                     </view>
                     
                 </picker>
@@ -42,15 +43,15 @@ import {mapState,mapActions,mapGetters} from 'vuex'
 export default {
     data(){
         return {
-            year: new Date().toLocaleDateString(),
-            hour: new Date().getHours(),
-            minute: new Date().getMinutes(),
-            date: new Date().toLocaleDateString(),
-            dateTime: []
+            date: new Date().toLocaleDateString()
+            
         }
     },
     computed:{
-        
+        ...mapState({
+            multiArray: state => state.index.multiArray,
+            multiIndex: state => state.index.multiIndex
+        })
 
     },
     methods:{
@@ -59,15 +60,24 @@ export default {
                 url: '/pages/Address/main'
             })
         },
-        bindTimeChange: function(e) {
-            console.log(1)
+        bindMultiPickerChange: function(e) {
+            console.log('picker发送选择改变，携带值为',e.detail.value)
             this.setData({
-                date: e.detail.value
+                multiIndex: e.detail.value
             })
-        }
+        },
+        bindMultiPickerColumnChange: function(e) {
+            console.log('修改的列为',e.detail.column,'值为',e.detail.value)
+            let data = {
+                multiArray: this.data.multiArray,
+                multiIndex: this.data.multiIndex
+            }
+            data.multiIndex[e.detail.column] = e.detail.value
+        },
+        
     },
     created(){
-       
+    
     }
  
 }

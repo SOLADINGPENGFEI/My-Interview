@@ -1,7 +1,8 @@
 <template>
     <div class="interview-list">
         <div class="tabNav">
-            <span v-for="(item,index) in tabNav" :key="index">{{item}}</span>
+            <span :class="ind === index?'active':null"
+            v-for="(item,index) in tabNav" :key="index" @click="tab(index)">{{item}}</span>
         </div>
         <div class="cont-list">
             <span>当前分类还没有面试!</span>
@@ -18,14 +19,17 @@ export default {
     },
     data(){
         return {
-            tabNav: ['未开始','已打卡','已放弃','全部']
+            tabNav: ['未开始','已打卡','已放弃','全部'],
+            ind: 0
         }
     },
     computed:{
 
     },
     methods:{
-
+        tab(i) {
+            this.ind = i
+        }
     },
     created(){
 
@@ -59,7 +63,13 @@ export default {
                 padding:50px 0;
                 font-size: 15px;
                 color:#666;
+                
             }
+            
         }
     }
+    .active {
+                border-bottom: 2px solid #197dbf;
+                color: #197dbf;
+            }
 </style>
