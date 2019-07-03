@@ -10,8 +10,7 @@ const state = {
         ["00分","10分","20分","30分","40分","50分"]
         ],
     multiIndex: [0,0,0],
-    openid: '',
-    phone: ''
+    openid: ''
 }
 
 //派发数据
@@ -24,37 +23,14 @@ const actions = {
     getLocation({commit},payload) {
         wx.getLocation({
             type: 'wgs84',
+            altitude: 'true',
             success (res) {
                 console.log('resMap...', res);
                 commit('updateLocation',res)
             }
         })
     },
-    Login({commit},payload) {
-        wx.login({
-            success(res) {
-              if(res.code) {
-                //发起网络请求
-                wx.request({
-                    url: 'https://sign.jasonandjay.com/user/code2session',
-                    method: 'post',
-                    data: {
-                        code: res.code
-                    },
-                    header: {
-                        'content-type': 'application/json'
-                    },
-                    success: function(res) {
-                        // console.log('res...',res)
-                        commit('updateCode',res.data)
-                    }
-                })
-              } else {
-                console.log('登录失败'+res.errMsg)
-              }
-            }
-          })
-    }
+    
     
 }
 
@@ -64,11 +40,7 @@ const mutations = {
         state.longitude = payload.longitude
         state.latitude = payload.latitude
     },
-    updateCode(state, payload) {
-        // console.log('payload...',payload)
-        state.openid = payload.data.openid
-        state.phone = payload.data.phone
-    },
+    
 
    
 }

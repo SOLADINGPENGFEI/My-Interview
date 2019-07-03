@@ -1,15 +1,31 @@
 <template>
     <div class="interview-list">
         <div class="tabNav">
-            <span :class="ind === index?'active':null"
+            <span :class="(active+3)%4 === index?'active':null"
             v-for="(item,index) in tabNav" :key="index" @click="tab(index)">{{item}}</span>
         </div>
         <div class="cont-list">
-            <span>当前分类还没有面试!</span>
+            <span v-if="!hasdata">当前分类还没有面试!</span>
+            <ul v-else class='list-msg'>
+                <li class="list-item" v-for="(ite,ind) in list" :key="ind" @click="goDetail(ite.id)">
+                    <div class="title">
+                        <label class='h3'>{{ite.company}}</label>
+                        <label class="tag">已放弃</label>
+                    </div>
+                    <p class="area">{{ite.description}}</p>
+                    <div class='time'>
+                        <label class='interview-time'>面试时间:{{ite.start_time}}</label>
+                        <label class='not-remind'>未提醒</label>
+                    </div>
+                </li>
+                
+            </ul>
         </div>
     </div>
 </template>
 <script>
+import {mapActions,mapState,mapMutations} from 'vuex'
+
 export default {
     props:{
 
@@ -20,22 +36,46 @@ export default {
     data(){
         return {
             tabNav: ['未开始','已打卡','已放弃','全部'],
-            ind: 0
+            hasdata: true
         }
     },
     computed:{
-
+        ...mapState({
+            list: state => state.sign.list,
+            active: state => state.sign.active,
+            page: state => state.sign.page,
+            hasMore: state => state.sign.hasMore
+        })
+       
     },
     methods:{
+        ...mapMutations({
+            updateState: 'sign/updateState'
+        }),
+        ...mapActions({
+            getList: 'sign/getList'
+        }),
         tab(i) {
-            this.ind = i
+           this.updateState({active: (i+1)%4, page:1})
+           this.getList()
+           if(this.list) {
+              return this.hasdata = true
+           } else {
+              return this.hasdata = false
+           }
+        },
+        goDetail(id) {
+            wx.navigateTo({url: '/pages/Detail/main?id='+id})
         }
     },
-    created(){
-
+    onShow() {
+        this.getList()
     },
-    mounted(){
-
+    onReachBottom() {
+        if(this.hasMore) {
+            this.updateState({page: this.page+1})
+            this.getList()
+        }
     }
 }
 </script>
@@ -58,14 +98,63 @@ export default {
         }
         .cont-list {
             padding-top: 88px;
-            text-align:center;
             span {
                 padding:50px 0;
                 font-size: 15px;
                 color:#666;
-                
             }
-            
+            .list-msg {
+                width: 100%;
+                .list-item {
+                    border-top: 10px solid #eee;
+                    width: 100%;
+                    padding: 5px 15px;
+                    box-sizing: border-box;
+                    height: 120px;
+                    .title {
+                        width: 100%;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .h3 {
+                            color:#000;
+                            font-size: 22px;
+                            font-weight:500;
+                        }
+                        .tag {
+                            background-color:hsla(0,87%,69%,.1);
+                            border-color:hsla(0,87%,69%,.2);
+                            color:#f56c6c;
+                            font-size: 15px;
+                            padding: 2.5px 5px;
+                        }
+                    }
+                    .area {
+                        width: 100%;
+                        height: 30px;
+                        font-size: 16px;
+                        color: #999;
+                        line-height: 30px;
+                    }
+                    .time {
+                        width: 100%;
+                        height: 30px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .interview-time {
+                            color: rgb(28, 199, 221);
+                        }
+                        .not-remind {
+                            background-color:hsla(220,4%,58%,.1);
+                            border-color:hsla(220,4%,58%,.2);
+                            color:#909399;
+                            padding: 2.5px 5px;
+                        }
+                    }
+                }
+            }
         }
     }
     .active {

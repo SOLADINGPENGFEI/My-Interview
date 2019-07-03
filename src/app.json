@@ -4,13 +4,14 @@
     "pages/AddInterview/main",
     "pages/Login/main",
     "pages/Address/main",
-    "pages/MyInterview/main"
+    "pages/MyInterview/main",
+    "pages/Detail/main"
 
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "我的面试我掌控",
     "navigationBarTextStyle": "black"
   },
   "permission": {

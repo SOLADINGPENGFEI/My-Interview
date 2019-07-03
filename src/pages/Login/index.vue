@@ -1,59 +1,102 @@
 <template>
     <div class="person-center">
-        <button class="userInfo" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+        <div class="userInfo">
             <div class="user-avtar">
                 <image src="/static/images/my.png"/>
             </div>
-            <p>{{phone}}</p>
-        </button>
+            <p>{{formatPhone}}</p>
+        </div>
         <div class="list-nav">
             <div class="item-nav" @click="myInterview">
                 <icon class="" size="18" type="waiting" role="img"></icon>
                 <label for="">我的面试</label>
-                <span>▶</span>
+                <image src="/static/images/arrow.svg"></image>
             </div>
             <button class="item-nav">
                 <icon class="" size="18" type="info" role="img"></icon>
                 <label for="">客服中心</label>
-                <span>▶</span>
+                <image src="/static/images/arrow.svg"></image>
             </button>
         </div>
+        <button v-if="!hasPhone" open-type="getPhoneNumber" @getphonenumber="getphonenumber">
+            获取手机号
+        </button>
+        <button v-if="!showSetting" open-type="openSetting">
+            设置权限
+        </button>
     </div>
 </template>
 <script>
-import {mapState,mapActions} from 'vuex'
+import {mapState,mapActions,mapMutations} from 'vuex'
+import {encryptData} from '@/services/index'
 export default {
+    data() {
+        return {
+            userTel: '',
+            hasPhone: false,
+            showSetting: false
+        }
+    },
     components:{
 
     },
     computed:{
         ...mapState({
-            phone: state => state.index.phone
-        })
+
+        }),
+        formatPhone() {
+            if(this.userTel) {
+                return this.userTel.slice(0,3) + '****' + this.userTel.slice(7,11)
+            } else {
+                return '***********'
+            }
+        }
     },
     methods:{
+        
         myInterview() {
             wx.navigateTo({
                 url: '/pages/MyInterview/main'
             })
         },
         onLoad: function() {
+            let that = this
             // 查看是否授权
             wx.getSetting({
             success (res){
+                console.log('loginRes...',res.authSetting)
                 if (res.authSetting['scope.userInfo']) {
                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                 wx.getUserInfo({
+                    withCredentials: true,
                     success: function(res) {
+                        that.hasPhone = true
                     console.log(res.userInfo)
                     }
                 })
+               
+                } else {
+                    // 未授权
+                    that.hasPhone = false
                 }
             }
             })
         },
-        bindGetUserInfo (e) {
-            console.log(e.detail.userInfo)
+        async getphonenumber(e) {
+            let that = this
+            console.log('e...',e)
+            if(e.target.errMsg != 'getPhoneNumber:fail user deny') {
+                //授权完成
+                let data = await encryptData({
+                    encryptedData: e.target.encryptedData,
+                    iv: e.target.iv
+                })
+                console.log(data)
+                that.userTel = data.data.phoneNumber
+            } else {
+                //授权失败
+                this.showSetting =false
+            }
         }
         
     },
@@ -106,6 +149,10 @@ export default {
                     font-size: 18px;
                     background:transparent;
                     text-align:left;
+                }
+                image {
+                    width:20px;
+                    height:20px;
                 }
             }
             button {

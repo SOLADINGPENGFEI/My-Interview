@@ -1,4 +1,7 @@
 <script>
+import {mapMutations,mapState,mapActions} from 'vuex'
+import {login} from './services/index'
+import {getAuth,getLocation} from '@/utils/index'
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -10,19 +13,30 @@ export default {
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
 
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
+    wx.login({
+      success: async res => {
+        console.log('reslogin...',res)
+        let data = await login(res.code)
+        console.log(data)
+        this.updateCode(data.data)
+        wx.setStorageSync('openid',data.data.openid)
+      }
+    })
+
+    
+    // 用户一打开小程序，就做定位
+    getAuth('scope.userLocation',async () => {
+      let location = await getLocation()
+      wx.setStorageSync('location',location)
+      console.log('location...',location)
+    })
+
+    let openid = wx.getStorageSync('openid')
+  },
+  methods: {
+      ...mapMutations({
+        updateCode: 'updateCode'
       })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
-    }
   },
   log () {
     console.log(`log at:${Date.now()}`)
