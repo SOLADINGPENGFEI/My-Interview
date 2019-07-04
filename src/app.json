@@ -5,7 +5,8 @@
     "pages/Login/main",
     "pages/Address/main",
     "pages/MyInterview/main",
-    "pages/Detail/main"
+    "pages/Detail/main",
+    "pages/Punch/main"
 
   ],
   "window": {

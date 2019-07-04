@@ -24,10 +24,11 @@ export let getSignList = params => {
 
 // 获取面试详情
 export let getSignDetail = id => {
-    return request.get('/sign/'+id)
+    return request.get('/sign/'+ id)
 }
 
+//
 //更新面试状态
 export let updateSignDetail = (id, params) => {
-    return request.post('/user/decrypt', params)
+    return request.put('/sign/'+id, params)
 }

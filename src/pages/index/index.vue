@@ -2,9 +2,6 @@
   <div class="wrap">
         <div class="main">
             <TencentMap />
-                <button class="relocation">
-                      <image class="locationIcon" src="/static/images/location.png"></image>
-                </button>
                 <button class="userInfo" @click="UserLogin">
                       <image class="userIcon" src="/static/images/my.png" />
                 </button>
@@ -58,22 +55,6 @@ export default {
     .main {
       flex: 1;
       width: 100%;
-     .relocation {
-        position: fixed;
-        left: 10px;
-        bottom: 75px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: none;
-        image {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            position:absolute;
-            right: 5px;
-          }
-     }
      .userInfo {
         position: fixed;
         right: 10px;

@@ -2,7 +2,7 @@ import {getSignList, getSignDetail, updateSignDetail} from '@/services/index'
 const moment = require('moment')
 
 const state = {
-    active: 1, //表示当前面试类型 0表示全部 1表示未开始 2表示一打开 3表示已放弃
+    active: 1, //表示当前面试类型 0表示全部 1表示未开始 2表示以打卡 3表示已放弃
     list: [], //面试列表
     info: {}, //面试详情数据
     hasMore: true, //是否有更多数据
@@ -29,13 +29,13 @@ const mutations = {
 const actions = {
     //获取面试列表
     getList({commit,state},payload) {
-        console.log('payload...',payload)
         return new Promise(async (resolve, reject) => {
             let params = {}
             // 修正面试状态
             if(state.action) {
                 params.status = state.active - 2
             }
+            
             // 拼接面试页码和每页数量
             params.page = state.page
             params.pageSize = state.pageSize
@@ -57,11 +57,12 @@ const actions = {
     getDetail({commit},payload) {
         return new Promise(async (resolve,reject)=>{
             let data = await getSignDetail(payload)
+            console.log('data...detail',data)
             if(data.data.address) {
                 data.data.address = JSON.parse(data.data.address)
             }
             data.data.start_time = formatTime(data.data.start_time)
-            clearImmediate('updateState', {info: data.data})
+            commit('updateState', {info: data.data})
             resolve()
         })
     },

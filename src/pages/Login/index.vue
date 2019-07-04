@@ -21,7 +21,7 @@
         <button v-if="!hasPhone" open-type="getPhoneNumber" @getphonenumber="getphonenumber">
             获取手机号
         </button>
-        <button v-if="!showSetting" open-type="openSetting">
+        <button v-if="showSetting" open-type="openSetting">
             设置权限
         </button>
     </div>
@@ -41,9 +41,7 @@ export default {
 
     },
     computed:{
-        ...mapState({
-
-        }),
+       
         formatPhone() {
             if(this.userTel) {
                 return this.userTel.slice(0,3) + '****' + this.userTel.slice(7,11)
@@ -67,10 +65,11 @@ export default {
                 console.log('loginRes...',res.authSetting)
                 if (res.authSetting['scope.userInfo']) {
                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                that.hasPhone = true
                 wx.getUserInfo({
                     withCredentials: true,
                     success: function(res) {
-                        that.hasPhone = true
+                        
                     console.log(res.userInfo)
                     }
                 })
@@ -95,7 +94,7 @@ export default {
                 that.userTel = data.data.phoneNumber
             } else {
                 //授权失败
-                this.showSetting =false
+                this.showSetting = false
             }
         }
         
@@ -158,8 +157,9 @@ export default {
             button {
                 border: none;
                 text-decoration:none;
-                color:#000000;
-                background:transparent
+                color:#d3cfcf;
+                background:transparent;
+                border-radius: 0;
             }
         }
     }

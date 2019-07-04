@@ -50,10 +50,9 @@ const range = [
 export default {
     data(){
         return {
-            date: new Date().toLocaleDateString(),
             info: {
                 date: [0,0,0]
-            }
+            },
         }
     },
     computed:{
@@ -137,9 +136,7 @@ export default {
         async submit(e) {
             console.log('submit...e',e)
             // 判断是否在提交状态
-            // if(this.submiting) {
-            //     return false
-            // }
+            
             // 判断公司名称是否为空
             if(!this.current.company) {
                 wx.showToast({

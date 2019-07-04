@@ -10,17 +10,18 @@
                 <li class="list-item" v-for="(ite,ind) in list" :key="ind" @click="goDetail(ite.id)">
                     <div class="title">
                         <label class='h3'>{{ite.company}}</label>
-                        <label class="tag">已放弃</label>
+                        <label class="tag">{{ite.status==-1?'未开始':ite.status==0?'已打卡':'已放弃'}}</label>
                     </div>
                     <p class="area">{{ite.description}}</p>
                     <div class='time'>
                         <label class='interview-time'>面试时间:{{ite.start_time}}</label>
-                        <label class='not-remind'>未提醒</label>
+                        <label class='not-remind'>{{ite.remind?'未提醒':'已提醒'}}</label>
                     </div>
                 </li>
-                
             </ul>
+            
         </div>
+        <p class="more" v-if="list.length&&list.length>=10">{{hasMore?'上拉加载更多':'我是有底线的'}}</p>
     </div>
 </template>
 <script>
@@ -83,6 +84,13 @@ export default {
     .interview-list {
         width: 100%;
         height: 100%;
+        .more {
+            text-align: center;
+            font-size: 16px;
+            line-height: 2;
+            color: #999;
+            border-top: 10px solid #eee;
+        }
         .tabNav {
             position:fixed;
             top:0;
