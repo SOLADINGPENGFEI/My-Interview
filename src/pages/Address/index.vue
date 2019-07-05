@@ -2,11 +2,13 @@
     <div class="address">
         <div class='searchAddress'>
             <label for="">北京</label>
-            <input type="text" placeholder="请选择面试地址" @input="searchPosition" v-model='address'>
+            <input type="text" placeholder="请选择面试地址" 
+             v-model='address' focus>
         </div>
         <div class='search-cont'>
             <ul class="list">
-                <li v-for="(item,index) in searchData" :key='index' @click='select(index)'>
+                <li v-for="(item,index) in searchData" :key='index' 
+                hover-class="hover" @click='select(index)'>
                     <image src="/static/images/location.svg"></image>
                     <div>
                         <h3>{{item.title}}</h3>
@@ -19,7 +21,7 @@
 </template>
 <script>
 import {mapMutations} from 'vuex'
-
+import {debounce} from '@/utils/index.js'
 
 export default {
     data() {
@@ -28,30 +30,14 @@ export default {
             address: ''
         }
     },
-    props:{
-
-    },
-    components:{
-
-    },
-    created(){
-        
+    watch: {
+        // 监听input框变化,调用智能提示
+        address(val, oldVal) {
+            this.search(val)
+        }
     },
     methods:{
-        searchPosition(e) {
-            const that = this
-            this.$map.search({
-                keyword: e.target.value,
-                region: '北京',
-                key: that.$map.key,
-                page_size:10,
-                page_index:1,
-                success: function(res) {
-                    console.log(res)
-                    that.searchData = res.data
-                }
-            })
-        },
+         
         select(index) {
             console.log('index...',index)
             //更新当前地址
@@ -66,9 +52,21 @@ export default {
         })
        
     },
-    
-    mounted(){
-
+    created(){
+        const that = this
+        this.search = debounce((val) => {
+            this.$map.search({
+                keyword: val,
+                region: '北京',
+                key: that.$map.key,
+                page_size:10,
+                page_index:1,
+                success: function(res) {
+                    console.log(res)
+                    that.searchData = res.data
+                }
+            })
+        },300)
     }
 }
 </script>

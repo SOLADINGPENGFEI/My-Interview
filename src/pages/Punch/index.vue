@@ -67,7 +67,7 @@ export default {
                     }
                 })
                 console.log('result...', result)
-                ex.showToast({
+                wx.showToast({
                     title: '打卡成功', //提示的内容
                     icon: 'none' // 图标
                 })

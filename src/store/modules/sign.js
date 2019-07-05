@@ -32,7 +32,7 @@ const actions = {
         return new Promise(async (resolve, reject) => {
             let params = {}
             // 修正面试状态
-            if(state.action) {
+            if(state.active) {
                 params.status = state.active - 2
             }
             
