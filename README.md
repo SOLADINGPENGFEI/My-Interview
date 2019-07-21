@@ -12,7 +12,7 @@
 #### 微信浏览器，请点击"访问原网页"
 
 <figure >
-<img src="./imgs/qrCode.png" width="200"/>
+<img src="" width="200"/>
 </figure >
 
 ## my-interview Screenshots
