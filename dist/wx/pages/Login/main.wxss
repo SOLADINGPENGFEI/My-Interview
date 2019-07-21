@@ -1,0 +1,60 @@
+@import "../../common/vendor.wxss";
+
+.person-center.data-v-014d8c96 {
+  width: 100%;
+  height: 100%;
+}
+.person-center .userInfo.data-v-014d8c96 {
+  background: #f4f6f9;
+  width: 100%;
+  height: 400rpx;
+  box-sizing: border-box;
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.person-center .userInfo .user-avtar.data-v-014d8c96 {
+  width: 160rpx;
+  height: 160rpx;
+  text-align: center;
+  line-height: 160rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+.person-center .userInfo .user-avtar image.data-v-014d8c96 {
+  width: 90%;
+  height: 90%;
+}
+.person-center .list-nav.data-v-014d8c96 {
+  width: 100%;
+}
+.person-center .list-nav .item-nav.data-v-014d8c96 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 30rpx 40rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.person-center .list-nav .item-nav ._label.data-v-014d8c96 {
+  flex: 1;
+  margin-left: 40rpx;
+  color: #666;
+  font-size: 36rpx;
+  background: transparent;
+  text-align: left;
+}
+.person-center .list-nav .item-nav image.data-v-014d8c96 {
+  width: 40rpx;
+  height: 40rpx;
+}
+.person-center .list-nav ._button.data-v-014d8c96 {
+  border: none;
+  text-decoration: none;
+  color: #d3cfcf;
+  background: transparent;
+  border-radius: 0;
+}

@@ -1,0 +1,48 @@
+@import "../../common/vendor.wxss";
+
+page,
+.wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+page .main,
+.wrap .main {
+  flex: 1;
+  width: 100%;
+}
+page .main .userInfo,
+.wrap .main .userInfo {
+  position: fixed;
+  right: 20rpx;
+  bottom: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: rgba(218, 211, 211, 0.404);
+}
+page .main .userInfo image,
+.wrap .main .userInfo image {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  position: absolute;
+  right: 10rpx;
+}
+page .main .soter,
+.wrap .main .soter {
+  height: 80rpx;
+  position: fixed;
+  left: 20rpx;
+  bottom: 300rpx;
+  border: none;
+  background: rgba(135, 115, 190, 0.507);
+  color: #fff;
+  z-index: 99;
+}
+page .footer,
+.wrap .footer {
+  width: 100%;
+  height: 100rpx;
+}

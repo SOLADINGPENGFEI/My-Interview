@@ -1,0 +1,15 @@
+<template name="6edf23d7">
+  <view class="_div data-v-9f88b07e interview-list">
+    <view class="_div data-v-9f88b07e tabNav"><label wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'0_'+index}}" data-comkey="{{$k}}" wx:for="{{tabNav}}" wx:for-index="index" wx:for-item="item" class="_span data-v-9f88b07e {{(active + 3) % 4 === index ? 'active' : null}}">{{item}}</label></view>
+    <view class="_div data-v-9f88b07e cont-list"><label wx:if="{{!list.length}}" class="_span data-v-9f88b07e">当前分类还没有面试!</label>
+      <view wx:else class="_ul data-v-9f88b07e list-msg">
+        <view class="_li data-v-9f88b07e list-item" wx:key="ind" key="{{ind}}" bindtap="handleProxy" data-eventid="{{'1_'+ind}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="ind" wx:for-item="ite">
+          <view class="_div data-v-9f88b07e title"><label class="_label data-v-9f88b07e h3">{{ite.company}}</label> <label class="_label data-v-9f88b07e tag">{{ite.status==-1?'未开始':ite.status==0?'已打卡':'已放弃'}}</label></view>
+          <view class="_p data-v-9f88b07e area">{{ite.description}}</view>
+          <view class="_div data-v-9f88b07e time"><label class="_label data-v-9f88b07e interview-time">面试时间:{{ite.start_time}}</label> <label class="_label data-v-9f88b07e not-remind">{{ite.remind?'未提醒':'已提醒'}}</label></view>
+        </view>
+      </view>
+    </view>
+    <view class="_p data-v-9f88b07e more" wx:if="{{list.length&&list.length>=10}}">{{hasMore?'上拉加载更多':'我是有底线的'}}</view>
+  </view>
+</template>

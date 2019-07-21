@@ -1,0 +1,19 @@
+<template name="5dcd6c0b">
+  <view class="_div data-v-014d8c96 person-center">
+    <view class="_div data-v-014d8c96 userInfo">
+      <view class="_div data-v-014d8c96 user-avtar">
+        <image src="/static/images/my.png" class="_image data-v-014d8c96"></image>
+      </view>
+      <view class="_p data-v-014d8c96">{{formatPhone}}</view>
+    </view>
+    <view class="_div data-v-014d8c96 list-nav">
+      <view class="_div data-v-014d8c96 item-nav" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <icon class="_icon data-v-014d8c96" size="18" type="waiting" role="img"></icon> <label for class="_label data-v-014d8c96">我的面试</label>
+        <image src="/static/images/arrow.svg" class="_image data-v-014d8c96"></image>
+      </view> <button class="_button data-v-014d8c96 item-nav">
+        <icon class="_icon data-v-014d8c96" size="18" type="info" role="img"></icon> <label for class="_label data-v-014d8c96">客服中心</label>
+        <image src="/static/images/arrow.svg" class="_image data-v-014d8c96"></image>
+      </button>
+    </view> <button wx:if="{{!hasPhone}}" open-type="getPhoneNumber" bindgetphonenumber="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-014d8c96"> 获取手机号 </button> <button wx:if="{{showSetting}}" open-type="openSetting" class="_button data-v-014d8c96"> 设置权限 </button>
+  </view>
+</template>

@@ -1,0 +1,7 @@
+<template name="47ed1dbe">
+  <view class="_div data-v-9bc067f8 TencentMap"><map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" key="X7RBZ-MMOKR-UQEWJ-WSCXC-IVXVK-IFFLL" show-location show-compass markers="{{markers}}" include-points="{{points}}" circles="{{circle}}" bindmarkertap="handleProxy" bindregionchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_map data-v-9bc067f8"></map>
+    <cover-view class="_cover-view data-v-9bc067f8 relocation">
+      <cover-image class="_cover-image data-v-9bc067f8 locationIcon" src="/static/images/location.png" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></cover-image>
+    </cover-view>
+  </view>
+</template>

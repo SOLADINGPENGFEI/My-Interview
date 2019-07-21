@@ -1,0 +1,16 @@
+<template name="d5f43c54">
+  <view class="_div data-v-6c261c40 address">
+    <view class="_div data-v-6c261c40 searchAddress"><label for class="_label data-v-6c261c40">北京</label> <input type="text" placeholder="请选择面试地址" value="{{address}}" bindinput="handleProxy" focus data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_input data-v-6c261c40" /></view>
+    <view class="_div data-v-6c261c40 search-cont">
+      <view class="_ul data-v-6c261c40 list">
+        <view wx:key="index" key="{{index}}" hover-class="hover" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{searchData}}" wx:for-index="index" wx:for-item="item" class="_li data-v-6c261c40">
+          <image src="/static/images/location.svg" class="_image data-v-6c261c40"></image>
+          <view class="_div data-v-6c261c40">
+            <view class="_h3 data-v-6c261c40">{{item.title}}</view>
+            <view class="_p data-v-6c261c40">{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

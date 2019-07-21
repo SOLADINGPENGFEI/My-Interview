@@ -1,0 +1,91 @@
+@import "../../common/vendor.wxss";
+
+.interview-list.data-v-9f88b07e {
+  width: 100%;
+  height: 100%;
+}
+.interview-list .more.data-v-9f88b07e {
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 2;
+  color: #999;
+  border-top: 20rpx solid #eee;
+}
+.interview-list .tabNav.data-v-9f88b07e {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 99;
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 2rpx solid #eee;
+}
+.interview-list .cont-list.data-v-9f88b07e {
+  padding-top: 176rpx;
+}
+.interview-list .cont-list ._span.data-v-9f88b07e {
+  font-size: 30rpx;
+  color: #666;
+  margin: 100rpx auto;
+  margin-left: 260rpx;
+}
+.interview-list .cont-list .list-msg.data-v-9f88b07e {
+  width: 100%;
+}
+.interview-list .cont-list .list-msg .list-item.data-v-9f88b07e {
+  border-top: 20rpx solid #eee;
+  width: 100%;
+  padding: 10rpx 30rpx;
+  box-sizing: border-box;
+  height: 240rpx;
+}
+.interview-list .cont-list .list-msg .list-item .title.data-v-9f88b07e {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.interview-list .cont-list .list-msg .list-item .title .h3.data-v-9f88b07e {
+  color: #000;
+  font-size: 44rpx;
+  font-weight: 500;
+}
+.interview-list .cont-list .list-msg .list-item .title .tag.data-v-9f88b07e {
+  background-color: rgba(245, 107, 107, 0.1);
+  border-color: rgba(245, 107, 107, 0.2);
+  color: #f56c6c;
+  font-size: 30rpx;
+  padding: 5rpx 10rpx;
+}
+.interview-list .cont-list .list-msg .list-item .area.data-v-9f88b07e {
+  width: 100%;
+  height: 60rpx;
+  font-size: 32rpx;
+  color: #999;
+  line-height: 60rpx;
+}
+.interview-list .cont-list .list-msg .list-item .time.data-v-9f88b07e {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.interview-list .cont-list .list-msg .list-item .time .interview-time.data-v-9f88b07e {
+  color: #1cc7dd;
+}
+.interview-list .cont-list .list-msg .list-item .time .not-remind.data-v-9f88b07e {
+  background-color: rgba(144, 146, 152, 0.1);
+  border-color: rgba(144, 146, 152, 0.2);
+  color: #909399;
+  padding: 5rpx 10rpx;
+}
+.active.data-v-9f88b07e {
+  border-bottom: 4rpx solid #197dbf;
+  color: #197dbf;
+}

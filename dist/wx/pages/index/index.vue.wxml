@@ -1,0 +1,9 @@
+<import src="/components/TencentMap.vue.wxml" />
+<import src="/components/footer.vue.wxml" /><template name="df2c0358">
+  <view class="_div data-v-31f5cbfe wrap">
+    <view class="_div data-v-31f5cbfe main"><template data="{{...$root[$kk+'0'], $root}}" is="47ed1dbe"></template> <button class="_button data-v-31f5cbfe userInfo" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+        <image class="_image data-v-31f5cbfe userIcon" src="/static/images/my.png"></image>
+      </button> <button class="_button data-v-31f5cbfe soter" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">指纹识别</button></view>
+    <view class="_div data-v-31f5cbfe footer"><template data="{{...$root[$kk+'1'], $root}}" is="59880c76"></template></view>
+  </view>
+</template>

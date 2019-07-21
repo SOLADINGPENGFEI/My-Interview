@@ -1,0 +1,6 @@
+<import src="/components/TencentMap.vue.wxml" /><template name="2b0628e0">
+  <view class="_div data-v-e7ee8d8c punch">
+    <view class="_div data-v-e7ee8d8c map"><template data="{{...$root[$kk+'0'], $root}}" is="47ed1dbe"></template></view>
+    <view class="_div data-v-e7ee8d8c gopunch"><button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-e7ee8d8c">打卡</button></view>
+  </view>
+</template>

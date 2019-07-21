@@ -1,0 +1,64 @@
+@import "../../common/vendor.wxss";
+
+.address.data-v-6c261c40 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.address .searchAddress.data-v-6c261c40 {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+}
+.address .searchAddress ._label.data-v-6c261c40 {
+  width: 26%;
+  text-align: center;
+  box-sizing: border-box;
+  border-right: 2rpx solid #eee;
+}
+.address .searchAddress ._input.data-v-6c261c40 {
+  cursor: auto;
+  text-indent: 20rpx;
+  display: block;
+  height: 80rpx;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: UICTFontTextStyleBody;
+  min-height: 80rpx;
+}
+.address .search-cont.data-v-6c261c40 {
+  width: 100%;
+  flex: 1;
+}
+.address .search-cont .list ._li.data-v-6c261c40 {
+  height: 100rpx;
+  padding: 10rpx 0 10rpx 60rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #eee;
+  display: flex;
+  align-items: cneter;
+  flex-direction: row;
+}
+.address .search-cont .list ._li image.data-v-6c261c40 {
+  width: 44rpx;
+  height: 44rpx;
+}
+.address .search-cont .list ._li ._div.data-v-6c261c40 {
+  flex: 1;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.address .search-cont .list ._li ._div ._h3.data-v-6c261c40 {
+  font-size: 34rpx;
+}
+.address .search-cont .list ._li ._div ._p.data-v-6c261c40 {
+  font-size: 24rpx;
+  color: silver;
+}

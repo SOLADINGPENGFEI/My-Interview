@@ -1,0 +1,51 @@
+@import "../../common/vendor.wxss";
+
+.detail.data-v-345009db {
+  width: 100%;
+  height: 100%;
+}
+.detail .interview_detail.data-v-345009db {
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+}
+.detail .interview_detail ._li.data-v-345009db {
+  width: 720rpx;
+  min-height: 88rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail .interview_detail ._li ._label.data-v-345009db {
+  color: #666;
+  width: 170rpx;
+  font-size: 30rpx;
+}
+.detail .interview_detail ._li ._span.data-v-345009db {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+}
+.detail .btns.data-v-345009db {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50rpx 0;
+}
+.detail .btns ._button.data-v-345009db {
+  width: 45%;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+}
+.detail .btns .card.data-v-345009db {
+  background: #197dbf;
+}
+.detail .btns .abandon.data-v-345009db {
+  background: #dc4e42;
+}

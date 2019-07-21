@@ -1,0 +1,4 @@
+<import src="/components/TencentMap.vue.wxml" />
+<import src="/components/footer.vue.wxml" />
+<import src="/components/footer.vue.wxml" />
+<import src="/components/TencentMap.vue.wxml" />

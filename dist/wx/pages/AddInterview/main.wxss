@@ -1,0 +1,52 @@
+@import "../../common/vendor.wxss";
+
+.addInterview.data-v-01bb2d2c {
+  width: 100%;
+}
+.addInterview .message ._h3.data-v-01bb2d2c {
+  background: #f0eeee;
+  padding: 20rpx;
+}
+.addInterview .message ._div.data-v-01bb2d2c {
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #ccc;
+  justify-content: space-around;
+}
+.addInterview .message ._div.data-v-01bb2d2c:last-child {
+  border-bottom: none;
+}
+.addInterview .message ._div ._span.data-v-01bb2d2c {
+  font-size: 32rpx;
+  color: #ccc;
+  width: 30%;
+}
+.addInterview .message ._div ._input.data-v-01bb2d2c {
+  width: 70%;
+  text-indent: 20rpx;
+  font-size: 32rpx;
+  cursor: auto;
+}
+.addInterview .message ._div .pick.data-v-01bb2d2c {
+  width: 60%;
+  height: 100%;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+.addInterview .message ._textarea.data-v-01bb2d2c {
+  margin: 20rpx auto;
+  width: 90%;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+.addInterview ._button.data-v-01bb2d2c {
+  margin-top: 50rpx;
+  color: #fff;
+  background: #197DBF;
+}
+.addInterview ._button.disable.data-v-01bb2d2c {
+  background: #999;
+}

@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/AddInterview/main",
+    "pages/Login/main",
+    "pages/Address/main",
+    "pages/MyInterview/main",
+    "pages/Detail/main",
+    "pages/Punch/main"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的面试我掌控",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "我们将通过您的定位获取您的位置信息"
+    }
+  }
+  
+}

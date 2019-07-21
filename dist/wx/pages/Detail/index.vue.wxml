@@ -1,0 +1,15 @@
+<template name="691798cb">
+  <view class="_div data-v-345009db detail">
+    <view class="_ul data-v-345009db interview_detail">
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">面试地址:</label> <label class="_span data-v-345009db address">{{info.address && info.address.address}}</label></view>
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">面试时间:</label> <label class="_span data-v-345009db time">{{info.start_time}}</label></view>
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">联系方式:</label> <label class="_span data-v-345009db tel" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">{{info.phone}}</label></view>
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">是否提醒:</label> <label class="_span data-v-345009db remind">{{info.remind?'未提醒':'已提醒'}}</label></view>
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">面试状态:</label> <label class="_span data-v-345009db status">{{info.status==-1?'未开始':info.status==0?'已打卡':'已放弃'}}</label></view>
+      <view class="_li data-v-345009db"><label class="_label data-v-345009db">取消提醒:</label>
+        <switch class="_switch data-v-345009db cancel" checked="{{info.remind===1}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" />
+      </view>
+    </view>
+    <view class="_div data-v-345009db btns" wx:if="{{info.status == -1}}"><button class="_button data-v-345009db card" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">去打卡</button> <button class="_button data-v-345009db abandon" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}">放弃面试</button></view>
+  </view>
+</template>
