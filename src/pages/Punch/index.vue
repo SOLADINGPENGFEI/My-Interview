@@ -1,7 +1,8 @@
 <template>
     <div class="punch">
         <div class="map">
-            <TencentMap :markers="markers" :updateDistance="updateDistance" />
+            <TencentMap :markers="markers" :updateDistance="updateDistance" 
+            :polyline="polyline" :points="points" />
         </div>
         <div class="gopunch">
             <button @tap="goSign">打卡</button>
@@ -24,7 +25,9 @@ export default {
     },
     computed:{
         ...mapState({
-            info: state=>state.sign.info
+            info: state=>state.sign.info,
+            longitude: state => state.index.longitude,
+            latitude: state => state.index.latitude
         }),
         distance() {
             return getDistance(this.info.latitude, this.info.longitude)
@@ -40,10 +43,12 @@ export default {
                     height: 20
                 }]
             } else {
-                return []
+                
             }
         }
+
     },
+    
     methods:{
         ...mapActions({
             updateDetail: 'sign/updateDetail'
@@ -53,8 +58,8 @@ export default {
 
         },
         updateDistance(distance) {
-            console.log('distance...', distance)
-            this.distance = dsitance
+            // console.log('distance....', distance)
+            this.distance = distance
         },
         async goSign() {
             let distance = this.distance
@@ -74,10 +79,11 @@ export default {
             } else {
                 if(this.distance > 1000) {
                     distance = (this.distance/1000).toFixed(2) + '公里'
+                    console.log(distance)
                 } else {
                     distance = this.distance + '米'
                 }
-                console.log('distance...', distance, this.distance)
+                // console.log('distance...', distance, this.distance)
                 wx.showToast({
                     title: `你距离目的地还有${distance},暂时还不能打卡`, //提示的内容
                     icon: 'none'
@@ -114,7 +120,7 @@ export default {
                 width: 100%;
                 height: 50px;
                 border: none;
-                background: #dd1ce4;
+                background: #12eba2;
                 color: #fff;
                 line-height: 50px;
                 border-radius: 0;

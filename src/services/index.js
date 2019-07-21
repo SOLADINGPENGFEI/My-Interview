@@ -32,3 +32,8 @@ export let getSignDetail = id => {
 export let updateSignDetail = (id, params) => {
     return request.put('/sign/'+id, params)
 }
+
+//指纹认证
+export let fingerprint = params => {
+    return request.post('/user/fingerPrint',params)
+}

@@ -2,9 +2,10 @@
   <div class="wrap">
         <div class="main">
             <TencentMap />
-                <button class="userInfo" @click="UserLogin">
-                      <image class="userIcon" src="/static/images/my.png" />
-                </button>
+            <button class="userInfo" @click="UserLogin">
+                  <image class="userIcon" src="/static/images/my.png" />
+            </button>
+            <button class="soter" @click="Soter">指纹识别</button>
         </div>
         <div class="footer">
             <Foot />
@@ -33,14 +34,39 @@ export default {
         wx.navigateTo({
           url: '/pages/Login/main'
         })
+      },
+      ...mapActions({
+          getResult: 'user/getResult'
+      }),
+      Soter() {
+        wx.startSoterAuthentication({
+          requestAuthModes: ['fingerPrint'],
+          challenge: 'hello user',
+          authContent: '请用指纹解锁',
+          success(res) {
+            console.log('res...',res)
+            if(res.errMsg === 'startSoterAuthentication:ok') {
+               wx.showToast({
+                 title: '指纹验证成功',
+                 icon: 'success'
+               })
+            } else {
+                wx.showToast({
+                 title: '指纹验证失败,请重试',
+                 icon: 'none'
+               })
+            }
+          },fail(err) {
+            console.log('err...',err)
+          }
+        })
       }
-     
   },
   cmoputed: {
      
   },
   created () {   
-    
+    this.getResult()
   
   }
 }
@@ -70,6 +96,16 @@ export default {
             position:absolute;
             right: 5px;
           }
+     }
+     .soter {
+       height: 40px;
+       position: fixed;
+       left: 10px;
+       bottom: 150px;
+       border: none;
+       background:rgba(135, 115, 190, 0.507);
+       color: #fff;
+       z-index: 99;
      }
     }
     .footer {

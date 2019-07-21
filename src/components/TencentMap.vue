@@ -91,22 +91,25 @@ export default {
             longitude: state => state.index.longitude,
             latitude: state => state.index.latitude
         }),
-        // points() {
-        //     return [this.location, ...this.markers]
-        // },
-        // circle() {
-        //     if(!this.markers.length) {
-        //         return []
-        //     } else {
-        //         return [{
-        //             ...this.markers[0],
-        //             color: this.distance > 100 ? '#c9394A':'#197DBF',
-        //             fillColor: 'rgba(0,0,0,.3)',
-        //             radius: 100,
-        //             strokeWidth: 2
-        //         }]
-        //     }
-        // }
+        points() {
+            return [{
+                ...this.latitude,
+                ...this.longitude
+            }, ...this.markers]
+        },
+        circle() {
+            if(!this.markers.length) {
+                return []
+            } else {
+                return [{
+                    ...this.markers[0],
+                    color: this.distance > 100 ? '#12eba2':'#08e76d',
+                    fillColor: '#449aa5',
+                    radius: 500,
+                    strokeWidth: 5
+                }]
+            }
+        }
     },
     watch: {
         reLocation() {

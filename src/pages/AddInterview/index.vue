@@ -120,7 +120,7 @@ export default {
         }),
         // 监听多列选择器每列变化
         columnChange(e) {
-            console.log('column...e',e)
+            // console.log('column...e',e)
             let {column,value} = e.target
             let date = [...this.info.date]
             date[column] = value
@@ -134,7 +134,7 @@ export default {
         },
         // 点击确认提交添加面试
         async submit(e) {
-            console.log('submit...e',e)
+            // console.log('submit...e',e)
             // 判断是否在提交状态
             
             // 判断公司名称是否为空
@@ -167,7 +167,7 @@ export default {
             this.current.form_id = e.target.formId
             // this.submiting = true
             let data = await this.submitInterview(this.current)
-            console.log('submitData...',data)
+            // console.log('submitData...',data)
             // this.submiting = false
             //处理添加的结果
             if(data.code === 0) {
@@ -178,7 +178,6 @@ export default {
                     confirmText: '确定', //确定按钮的文字,默认为取消,最多4个字符
                     confirmColor: '#197DBF', //确定按钮的文字颜色
                     success: res => {
-                        console.log('2',res)
                         if(res.confirm) {
                             this.updateState({
                                 form_id: '',

@@ -62,7 +62,7 @@ export default {
             // 查看是否授权
             wx.getSetting({
             success (res){
-                console.log('loginRes...',res.authSetting)
+                // console.log('loginRes...',res.authSetting)
                 if (res.authSetting['scope.userInfo']) {
                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                 that.hasPhone = true
@@ -70,7 +70,7 @@ export default {
                     withCredentials: true,
                     success: function(res) {
                         
-                    console.log(res.userInfo)
+                    // console.log(res.userInfo)
                     }
                 })
                
@@ -83,14 +83,14 @@ export default {
         },
         async getphonenumber(e) {
             let that = this
-            console.log('e...',e)
+            // console.log('e...',e)
             if(e.target.errMsg != 'getPhoneNumber:fail user deny') {
                 //授权完成
                 let data = await encryptData({
                     encryptedData: e.target.encryptedData,
                     iv: e.target.iv
                 })
-                console.log(data)
+                // console.log(data)
                 that.userTel = data.data.phoneNumber
             } else {
                 //授权失败

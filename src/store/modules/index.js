@@ -19,7 +19,7 @@ const actions = {
             type: 'wgs84',
             altitude: 'true',
             success (res) {
-                console.log('resMap...', res);
+                // console.log('resMap...', res);
                 commit('updateLocation',res)
             }
         })

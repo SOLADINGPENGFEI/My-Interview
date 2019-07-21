@@ -6,6 +6,7 @@ import createLogger from 'vuex/dist/logger'
 import index from './modules/index'
 import interview from './modules/interview'
 import sign from './modules/sign'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     modules: {
         index,
         interview,
-        sign
+        sign,
+        user
     },
     state: {
         info: {}  //用户信息

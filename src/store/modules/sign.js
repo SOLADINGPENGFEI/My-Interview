@@ -57,7 +57,7 @@ const actions = {
     getDetail({commit},payload) {
         return new Promise(async (resolve,reject)=>{
             let data = await getSignDetail(payload)
-            console.log('data...detail',data)
+            // console.log('data...detail',data)
             if(data.data.address) {
                 data.data.address = JSON.parse(data.data.address)
             }

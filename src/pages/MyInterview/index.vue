@@ -5,7 +5,7 @@
             v-for="(item,index) in tabNav" :key="index" @click="tab(index)">{{item}}</span>
         </div>
         <div class="cont-list">
-            <span v-if="!hasdata">当前分类还没有面试!</span>
+            <span v-if="!list.length">当前分类还没有面试!</span>
             <ul v-else class='list-msg'>
                 <li class="list-item" v-for="(ite,ind) in list" :key="ind" @click="goDetail(ite.id)">
                     <div class="title">
@@ -37,7 +37,6 @@ export default {
     data(){
         return {
             tabNav: ['未开始','已打卡','已放弃','全部'],
-            hasdata: true
         }
     },
     computed:{
@@ -59,11 +58,7 @@ export default {
         tab(i) {
            this.updateState({active: (i+1)%4, page:1})
            this.getList()
-           if(this.list) {
-              return this.hasdata = true
-           } else {
-              return this.hasdata = false
-           }
+       
         },
         goDetail(id) {
             wx.navigateTo({url: '/pages/Detail/main?id='+id})
@@ -107,9 +102,10 @@ export default {
         .cont-list {
             padding-top: 88px;
             span {
-                padding:50px 0;
                 font-size: 15px;
                 color:#666;
+                margin: 50px auto;
+                margin-left: 130px;
             }
             .list-msg {
                 width: 100%;
